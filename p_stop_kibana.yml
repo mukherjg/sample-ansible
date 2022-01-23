@@ -1,0 +1,22 @@
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  tasks:
+   # - name: Get running processes
+     # shell: "ps -ef | grep -v grep | grep -w 'kibana-6.6.1' | awk '{print $2}' | head -n 1"
+     # register: running_processes
+   - name: get contents of file
+     command: cat "{{v_kibana_home}}/kibana.pid"
+     register: filename
+  
+
+   # - name: viewing the contents
+     # debug:
+       # msg: "{{filename.stdout}}"     
+
+   - name: Kill running processes
+     shell: "kill -9 {{ item }}"
+     with_items: "{{ filename.stdout_lines }}"
+
+...

@@ -1,0 +1,6 @@
+ 
+ ev_env: "development"
+ ev_var_path: "./inventories/{{ev_env}}"
+ ev_hosts_path: "{{ev_var_path}}"
+ ev_template_path: "{{ev_hosts_path}}/template"
+ 

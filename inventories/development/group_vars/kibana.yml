@@ -1,0 +1,17 @@
+# [kibana]
+ v_stack: kibana
+ v_kibana_install_dir: "{{v_elastic_install_dir}}"
+ v_kibana_home: "{{v_kibana_install_dir}}/kibana-6.6.1-linux-x86_64"
+ v_instance_home: "{{v_kibana_home}}"
+ v_kibana_package_name: kibana-6.6.1-linux-x86_64.tar.gz
+ v_kibanayml_path: "{{v_kibana_home}}/config"
+ v_kibana_data_path: "/data/{{v_stack}}/{{v_node_name}}_data"
+ v_data_path: "/data/{{v_stack}}/{{v_node_name}}_data"
+ v_kibana_log_path: "/data/{{v_stack}}/{{v_node_name}}_log"
+ v_log_path: "/data/{{v_stack}}/{{v_node_name}}_log" 
+ v_kibana_port: 5001
+ v_kibana_server_host: "{{ansible_hostname}}.farmersinsurance.com"
+ v_http_port_coordinate: 9201
+ v_elasticsearch_hosts: "https://elasticsearch-dev.farmersinsurance.com:443"
+ v_pid_file_path: "./kibana.pid"
+

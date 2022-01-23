@@ -1,0 +1,15 @@
+#ansible-playbook -i development 
+---
+- hosts: elastic
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/elastic.yml"
+ #  - ./group_vars/coordinating.yml
+
+  tasks:
+   - name: start elasticsearch
+     shell: cd /tmp/www; nohup sh "{{v_elastic_home}}/bin/elasticsearch" </dev/null >/dev/null 2>&1 &
+     
+...  

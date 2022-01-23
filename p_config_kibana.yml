@@ -1,0 +1,10 @@
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+  tasks:
+     - include_role:
+         name: ./roles/r_config_kibanaYML
+...  

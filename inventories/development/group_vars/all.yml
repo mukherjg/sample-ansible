@@ -1,0 +1,15 @@
+# [all]
+ v_software_dir: /apps/elk/software
+ v_software_repo: /elastic/ansible/software
+ v_node_name: "{{ansible_hostname}}"
+ v_elastic_install_dir: '/apps/elk'
+ v_certTarget_dir: "{{v_instance_home}}/config/certs"
+ v_cert_repo: /elastic/ansible/certificate
+ v_dir_permission: '775'
+ v_ssl_key: es-dev-private.key
+ v_ssl_certificate: elasticsearch-dev_farmersinsurance_com.pem  
+ v_ca_cert_authority: "[\"{{v_instance_home}}/config/certs/DigiCertHighAssuranceEVRootCA.pem\",\"{{v_instance_home}}/config/certs/DigiCertSHA2EVIntermediateCA.pem\"]"
+ v_ca_cert_authority_root: DigiCertHighAssuranceEVRootCA.pem
+ v_ca_cert_authority_intermediate: DigiCertSHA2EVIntermediateCA.pem
+ 
+

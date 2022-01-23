@@ -1,0 +1,32 @@
+---
+     
+   - include_vars: vars/main.yml
+  
+     
+   - name: make software directory
+     file:
+          path: "{{v_software_dir}}"
+          state: directory
+          owner: elastic
+          group: elastic
+          mode: "{{v_dir_permission}}" 
+        
+        
+   - name: make data directory
+     file:
+        path: "{{v_data_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}"
+        recurse: yes
+        
+   - name: make log directory
+     file:
+        path: "{{v_log_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}" 
+        recurse: yes        
+...

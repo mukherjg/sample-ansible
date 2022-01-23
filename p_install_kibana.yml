@@ -1,0 +1,36 @@
+
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+  - "{{ev_var_path}}/group_vars/all.yml"
+  - "{{ev_var_path}}/group_vars/elastic.yml"
+  
+  tasks:
+  
+    - name: create directory
+      include_role: 
+            name: ./roles/r_create_directory
+      tags: create_directory    
+    
+    - name: include role install kibana
+      include_role: 
+            name: ./roles/r_install_kibana
+      tags: install_kibana      
+            
+           
+    - name: include role config JVM option       
+      include_role:
+            name: ./roles/r_config_jvmOption
+      tags: config_jvmOption      
+            
+            
+    - name: include role config kibanaYML        
+      include_role:
+            name: ./roles/r_config_kibanaYML
+      tags: 
+        - config_kibana
+         
+       
+...  

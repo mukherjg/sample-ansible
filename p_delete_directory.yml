@@ -1,0 +1,52 @@
+---
+- hosts: all
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+
+  tasks:
+       
+   - name: remove home directory
+     file: 
+       path: "{{v_instance_home}}"
+       state: absent
+       
+   - name: remove software directory
+     file: 
+       path: "{{v_software_dir}}"
+       state: absent 
+  
+   - name: remove JDK directory
+     file: 
+       path: "{{v_instance_home}}/jdk1.8.0_201"
+       state: absent
+       
+   - name: find data file to be deleted in /data/elastic directory
+     find:
+       paths: /data
+       patterns: "elastic"
+       file_type: directory
+     register: data_dir_to_delete
+
+   - name: delete data directory
+     file:
+       path: "{{ item.path }}"
+       state: absent
+     with_items: "{{ data_dir_to_delete.files }}"
+     
+   - name: find data file to be deleted in /data/kibana directory
+     find:
+       paths: /data
+       patterns: "kibana"
+       file_type: directory
+     register: data_dir_to_delete
+
+   - name: delete data directory
+     file:
+       path: "{{ item.path }}"
+       state: absent
+     with_items: "{{ data_dir_to_delete.files }}"     
+     
+ 
+...

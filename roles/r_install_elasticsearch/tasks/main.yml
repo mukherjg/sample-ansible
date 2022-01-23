@@ -1,0 +1,23 @@
+---
+     - include_vars: vars/main.yml
+     - name: copy elasticsearch
+       copy: 
+         src: "{{v_software_repo}}/{{v_elastic_package_name}}" 
+         dest: "{{v_software_dir}}"
+         owner: elastic 
+         group: elastic 
+         mode: "{{v_dir_permission}}"
+         
+     - name: install elasticsearch
+       unarchive:
+             src: "{{v_software_dir}}/{{v_elastic_package_name}}"
+             dest: "{{v_elastic_install_dir}}"
+             remote_src: yes
+     - name: create certs directory
+       file:
+          path: "{{v_elastic_home}}/config/certs"
+          state: directory
+          owner: elastic
+          group: elastic
+          mode: "{{v_dir_permission}}"
+...

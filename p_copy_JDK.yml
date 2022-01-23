@@ -1,0 +1,18 @@
+#copy jdk to software directory
+---
+- hosts: all
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+  tasks:
+
+     - name: copy jdk to software directory 
+       copy:
+             src: "{{v_software_repo}}/jdk-8u201-linux-x64.tar.gz"
+             dest: "{{v_software_dir}}"
+             owner: elastic
+             group: elastic
+             mode: "{{v_dir_permission}}"    
+       
+...  

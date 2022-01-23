@@ -1,0 +1,33 @@
+ v_env: 'dev'
+ v_stack: elastic
+ v_elastic_package_name: elasticsearch-6.6.1.tar.gz
+ v_elastic_home: "{{v_elastic_install_dir}}/elasticsearch-6.6.1"
+ v_instance_home: "{{v_elastic_home}}"
+ v_cluster_name: dev_cluster
+ v_data_path: "/data/{{v_stack}}/{{v_node_name}}_data"
+ v_elastic_data_path: "/data/{{v_stack}}/{{v_node_name}}_data"
+ v_log_path: "/data/{{v_stack}}/{{v_node_name}}_log"
+ v_elastic_log_path: "/data/{{v_stack}}/{{v_node_name}}_log"
+ v_elasticsearchyml_path: "{{v_elastic_home}}/config"
+ v_network_host: "{{ansible_hostname}}"
+ v_transport_tcp_port: 9301
+ v_transport_publish_host: "{{ansible_hostname}}"
+ v_transport_publish_port: 9301
+ v_http_port: 9201
+ v_discovery_zen_ping_unicast_hosts: "[\"fmlvrelk1117.farmersinsurance.com:{{v_transport_tcp_port}}\",
+ \"fmlvrelk1118.farmersinsurance.com:{{v_transport_tcp_port}}\",
+ \"fmlvrelk1119.farmersinsurance.com:{{v_transport_tcp_port}}\",
+ \"fmlvrelk1120.farmersinsurance.com:{{v_transport_tcp_port}}\"]"
+ v_discovery_zen_minimum_master_nodes: 2
+ v_jvmOption_path: "{{v_elastic_home}}/config"
+ v_Xms_size: 10
+ v_HeapDumpPath: "{{v_data_path}}"
+
+ 
+
+
+
+
+
+ 
+

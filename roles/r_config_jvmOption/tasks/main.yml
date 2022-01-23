@@ -1,0 +1,7 @@
+---
+     - include_vars: vars/main.yml
+     - name: configure jvm option
+       template:
+        src: template_jvmOption.j2
+        dest: "{{v_jvmOption_path}}/jvm.options"
+...     

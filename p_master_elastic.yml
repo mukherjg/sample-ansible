@@ -1,0 +1,9 @@
+#install_elasticsearch and SSL
+---
+  - hosts: elastic
+  - import_playbook: p_create_directory.yml
+  - import_playbook: p_copy_JDK.yml
+  - import_playbook: p_install_JAVA.yml
+  - import_playbook: p_install_elasticsearch.yml
+       
+...  

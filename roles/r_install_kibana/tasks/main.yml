@@ -1,0 +1,23 @@
+---
+     - include_vars: vars/main.yml
+     - name: copy kibana
+       copy: 
+         src: "{{v_software_repo}}/{{v_kibana_package_name}}" 
+         dest: "{{v_software_dir}}"
+         owner: elastic 
+         group: elastic 
+         mode: "{{v_dir_permission}}"
+             
+     - name: install kibana
+       unarchive:
+             src: "{{v_software_dir}}/{{v_kibana_package_name}}"
+             dest: "{{v_kibana_install_dir}}"
+             remote_src: yes
+     - name: create certs directory
+       file:
+          path: "{{v_kibana_home}}/config/certs"
+          state: directory
+          owner: elastic
+          group: elastic
+          mode: "{{v_dir_permission}}"
+...

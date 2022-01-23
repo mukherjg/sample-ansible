@@ -1,0 +1,24 @@
+#check all play
+#ansible-playbook -C -i inventories/development p_check_all_play.yml --extra-vars "@extra_var_file.yml"
+---
+  - import_playbook: p_push_ssh_keys.yml
+  - import_playbook: p_create_directory.yml
+  - import_playbook: p_copy_JDK.yml
+  - import_playbook: p_install_JAVA.yml
+  - import_playbook: p_install_elasticsearch.yml
+  - import_playbook: p_config_elastic.yml
+  - import_playbook: p_install_kibana.yml
+  - import_playbook: p_config_kibana.yml
+  - import_playbook: p_config_jvmOption.yml
+  - import_playbook: p_copy_all_certs.yml
+  - import_playbook: p_enable_SSL.yml
+  - import_playbook: p_start_elastic.yml
+  - import_playbook: p_start_kibana.yml
+#  - import_playbook: p_stop_kibana.yml  
+  - import_playbook: p_stop_elastic.yml  
+#  - import_playbook: p_uninstall_kibana.yml
+  - import_playbook: p_uninstall_elastic.yml
+ 
+
+  
+...  

@@ -1,0 +1,37 @@
+#install_elasticsearch and SSL
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/kibana.yml"
+
+  tasks:
+    
+    - name: create directory
+      include_role: 
+            name: ./roles/r_create_directory
+      tags: create_dir_kibana      
+            
+ 
+    - name: copy jdk to software directory 
+      copy:
+         src: "{{v_software_repo}}/jdk-8u201-linux-x64.tar.gz"
+         dest: "{{v_software_dir}}"
+         owner: elastic
+         group: elastic
+         mode: "{{v_dir_permission}}"
+      tags: copy_jdk 
+
+    - name: install kibana
+      include_role: 
+            name: ./roles/r_install_kibana
+      tags: install_kibana     
+
+    - name: config kibanaYML
+      include_role: 
+            name: ./roles/r_config_kibanaYML
+      tags: config_kibanaYML              
+        
+...  

@@ -1,0 +1,28 @@
+#install Java and set path
+---
+- hosts: all
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+  tasks:
+
+     - name: install jdk
+       unarchive:
+             src: "{{v_software_dir}}/jdk-8u201-linux-x64.tar.gz"
+             dest: "{{v_elastic_install_dir}}"
+             remote_src: yes
+     - name: Set Java HOME
+       lineinfile:
+              dest: ~/.bashrc
+              regexp: '^JAVA_HOME'
+              line: "export JAVA_HOME={{v_elastic_install_dir}}/jdk1.8.0_201"
+     - name: Set JAVA PATH
+       lineinfile:
+              dest: ~/.bashrc
+              regexp: '^JAVA_HOME'
+              line: "export PATH=$PATH:$JAVA_HOME/bin"
+     - name: Source Bashrc
+       action: shell source ~/.bashrc     
+       
+...  

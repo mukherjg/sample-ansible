@@ -1,0 +1,21 @@
+#ansible-playbook -i development 
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/kibana.yml"
+ 
+
+  tasks: 
+   - name: go to kibana config
+     shell: cd /apps/elk/kibana-6.6.1-linux-x86_64/config
+     
+   # - name: start kibana 
+     # shell: nohup sh /apps/elk/kibana-6.6.1-linux-x86_64/bin/kibana 2>&1 &
+     # register: res
+ 
+     
+
+...  

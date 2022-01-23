@@ -1,0 +1,9 @@
+---
+     
+     - include_vars: vars/main.yml
+               
+     - name: configure elasticsearch YML
+       template:
+        src: template_elasticsearchYML.j2
+        dest: "{{v_elasticsearchyml_path}}/elasticsearch.yml"
+...     

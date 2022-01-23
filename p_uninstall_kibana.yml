@@ -1,0 +1,50 @@
+---
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+
+  tasks:
+   - name: get contents of file
+     command: cat "{{v_kibana_home}}/kibana.pid"
+     register: filename
+
+   - name: Kill running processes
+     shell: "kill -9 {{ item }}"
+     with_items: "{{ filename.stdout_lines }}"
+   
+   
+       
+   - name: remove home directory
+     file: 
+       path: "{{v_kibana_home}}"
+       state: absent
+       
+   - name: remove software directory
+     file: 
+       path: "{{v_software_dir}}"
+       state: absent 
+  
+   - name: remove JDK directory
+     file: 
+       path: /apps/elk_marketing/jdk1.8.0_201
+       state: absent
+       
+   - name: find data file to be deleted in Data directory
+     find:
+       paths: /data
+       patterns: "*_data"
+       file_type: directory
+     register: data_dir_to_delete
+
+   - name: delete data directory
+     file:
+       path: "{{ item.path }}"
+       state: absent
+     with_items: "{{ data_dir_to_delete.files }}"
+     
+
+    
+ 
+...

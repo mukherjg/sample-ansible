@@ -1,0 +1,44 @@
+# This host is for checking purpose 
+##ansible-playbook -C -i inventories/development p_check_all_play.yml --extra-vars "@extra_var_file.yml"
+
+[all]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic
+fmlvrelk1131.farmersinsurance.com ansible_user=elastic
+
+ 
+[elastic]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic
+
+
+[master]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+
+
+
+[data]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic
+
+
+[coordinating]
+
+
+[logstash]
+
+
+
+[kibana]
+fmlvrelk1131.farmersinsurance.com ansible_user=elastic
+
+
+
+

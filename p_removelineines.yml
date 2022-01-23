@@ -1,0 +1,14 @@
+#copy jdk to software directory
+---
+- hosts: elastic_test
+  remote_user: elastic
+  gather_facts: true
+#  vars_files: 
+#   - "{{ev_var_path}}/group_vars/all.yml"
+  tasks:
+
+     - name: Remove file (delete file)
+       file:
+        path: /apps/elk/test_line
+        state: absent
+...  

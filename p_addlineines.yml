@@ -1,0 +1,15 @@
+#create te a file and add a line
+---
+- hosts: elastic_test
+  remote_user: elastic
+  gather_facts: true
+  tasks:
+    - name: add 2 lines in a file
+      blockinfile:
+         path: /apps/elk/test_line
+         block: |
+            #This block is added on 13-mar-2020 in R3 for SLM
+            path.repo: ["/data_backup"]
+            # end block for R3
+...
+

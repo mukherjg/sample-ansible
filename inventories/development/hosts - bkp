@@ -1,0 +1,44 @@
+
+[all]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic
+fmlvrelk1115.farmersinsurance.com ansible_user=elastic
+fmlvrelk1116.farmersinsurance.com ansible_user=elastic
+fmlvrelk1131.farmersinsurance.com ansible_user=elastic
+fmlvrelk1132.farmersinsurance.com ansible_user=elastic
+ 
+[elastic]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic 
+
+[master]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+
+
+[data]
+fmlvrelk1111.farmersinsurance.com ansible_user=elastic
+fmlvrelk1112.farmersinsurance.com ansible_user=elastic
+fmlvrelk1113.farmersinsurance.com ansible_user=elastic
+fmlvrelk1114.farmersinsurance.com ansible_user=elastic
+
+[coordinating]
+
+
+[logstash]
+fmlvrelk1115.farmersinsurance.com ansible_user=elastic
+fmlvrelk1116.farmersinsurance.com ansible_user=elastic
+
+
+[kibana]
+fmlvrelk1131.farmersinsurance.com ansible_user=elastic
+fmlvrelk1132.farmersinsurance.com ansible_user=elastic
+
+
+
+

@@ -1,0 +1,35 @@
+#ansible-playbook -i development 
+---
+- name: copy certificates
+  import_playbook: p_copy_all_certs.yml
+  
+- hosts: elastic
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/elastic.yml"
+    
+  tasks:
+     - name: configure elasticsearch YML
+       template:
+        src: "{{ev_template_path}}/template_elasticsearchYML.j2"
+        dest: "{{v_elasticsearchyml_path}}/elasticsearch.yml"
+       tags: SSL_Elastic 
+        
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/kibana.yml"
+    
+  tasks:
+
+     - name: configure kibana YML
+       template:
+        src: "{{ev_template_path}}/template_kibanaYML.j2"
+        dest: "{{v_kibanayml_path}}/kibana.yml"
+       tags: SSL_Elastic        
+               
+...  

@@ -1,0 +1,10 @@
+#ansible-playbook -i development 
+---
+- hosts: elastic
+  remote_user: elastic
+  gather_facts: true
+  tasks:
+   - name: start elasticsearch
+     shell: cd /tmp/www; nohup sh "/apps/elk/elasticsearch-6.6.1/bin/elasticsearch" </dev/null >/dev/null 2>&1 &
+     
+...  

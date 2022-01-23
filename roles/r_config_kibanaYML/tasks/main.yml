@@ -1,0 +1,9 @@
+---
+     
+     - include_vars: vars/main.yml
+               
+     - name: configure kibana YML
+       template:
+        src: template_kibanaYML.j2
+        dest: "{{v_kibanayml_path}}/kibana.yml"
+...     

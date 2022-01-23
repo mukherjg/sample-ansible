@@ -1,0 +1,8 @@
+#install_elasticsearch and SSL
+---
+  - import_playbook: p_master_elastic.yml
+  - import_playbook: p_master_kibana.yml
+#  - import_playbook: p_master_logstash.yml
+  - import_playbook: p_enable_SSL.yml
+    
+...  

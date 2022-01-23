@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: elastic
+  gather_facts: true
+  tasks:
+   - name: Get running processes
+     shell: "ps -ef | grep -v grep | grep -w 'elasticsearch-6.6.1' | awk '{print $2}' | head -n 1"
+     register: running_processes
+
+   - name: Kill running processes
+     shell: "kill -9 {{ item }}"
+     with_items: "{{ running_processes.stdout_lines }}"
+#     with_items: "{{ running_processes.stdout }}"
+
+...

@@ -1,0 +1,37 @@
+#copy all certificate to software directory
+---
+- hosts: elastic
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/elastic.yml"
+  tasks:
+
+     - name: copy SSL files to config/certs directory 
+       copy:
+             src: "{{v_cert_repo}}/"
+             dest: "{{v_certTarget_dir}}"
+             owner: elastic
+             group: elastic
+             mode: "{{v_dir_permission}}"
+             
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+   - "{{ev_var_path}}/group_vars/kibana.yml"
+  tasks:
+
+     - name: copy SSL files to config/certs directory 
+       copy:
+             src: "{{v_cert_repo}}/"
+             dest: "{{v_certTarget_dir}}"
+             owner: elastic
+             group: elastic
+             mode: "{{v_dir_permission}}" 
+             
+              
+       
+...  

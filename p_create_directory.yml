@@ -1,0 +1,69 @@
+#create software directory
+---
+- hosts: all
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"
+  tasks:
+
+   - name: make software directory
+     file:
+          path: "{{v_software_dir}}"
+          state: directory
+          owner: elastic
+          group: elastic
+          mode: "{{v_dir_permission}}" 
+          
+# create data and log directory        
+- hosts: elastic
+  remote_user: elastic
+  gather_facts: true
+  vars_files:
+   - "{{ev_var_path}}/group_vars/all.yml"  
+   - "{{ev_var_path}}/group_vars/elastic.yml"
+  tasks:
+
+   - name: make data directory
+     file:
+        path: "{{v_data_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}"
+        recurse: yes
+        
+   - name: make log directory
+     file:
+        path: "{{v_log_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}"
+        recurse: yes        
+        
+- hosts: kibana
+  remote_user: elastic
+  gather_facts: true
+  vars_files: 
+   - "{{ev_var_path}}/group_vars/all.yml"  
+   - "{{ev_var_path}}/group_vars/kibana.yml"
+  tasks:
+   - name: make data directory
+     file:
+        path: "{{v_data_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}"
+        recurse: yes
+        
+   - name: make log directory
+     file:
+        path: "{{v_log_path}}"
+        state: directory
+        owner: elastic
+        group: elastic
+        mode: "{{v_dir_permission}}" 
+        recurse: yes        
+...  
